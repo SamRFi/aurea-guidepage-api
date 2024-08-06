@@ -9,7 +9,7 @@ import org.springframework.transaction.annotation.Transactional
 @Service
 class HomeService(
     private val homeRepository: HomeRepository,
-    private val guidePageService: GuidePageService // Inject GuidePageService
+    private val guidePageService: GuidePageService
 ) {
 
     fun getAllHomes(): List<Home> = homeRepository.findAll()

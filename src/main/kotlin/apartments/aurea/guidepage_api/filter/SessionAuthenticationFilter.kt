@@ -27,8 +27,10 @@ class SessionAuthenticationFilter(
                 if (user != null) {
                     val authentication = UsernamePasswordAuthenticationToken(user, null, listOf(SimpleGrantedAuthority("ROLE_USER")))
                     SecurityContextHolder.getContext().authentication = authentication
+                    // Set the user ID in the request attributes
+                    request.setAttribute("userId", userId)
                     // Renew session
-                    redisTemplate.expire(sessionId, Duration.ofMinutes(30))
+                    redisTemplate.expire(sessionId, Duration.ofMinutes(1))
                 }
             }
         }
