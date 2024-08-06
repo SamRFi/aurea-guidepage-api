@@ -5,6 +5,14 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+# Application properties
+src/main/resources/application.properties
+src/test/resources/application.properties
+
+# Except for example files
+!src/main/resources/application-example.properties
+!src/test/resources/application-example.properties
+
 ### STS ###
 .apt_generated
 .classpath
