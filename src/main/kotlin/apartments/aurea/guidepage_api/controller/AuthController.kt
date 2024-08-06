@@ -19,9 +19,8 @@ class AuthController(
         val user = userService.validateUser(request.accessCode)
         return if (user != null) {
             val sessionId = UUID.randomUUID().toString()
-            // Store session in Redis
             redisTemplate.opsForValue().set(sessionId, user.id, Duration.ofMinutes(30))
-            ResponseEntity.ok(mapOf("sessionId" to sessionId))
+            ResponseEntity.ok(mapOf("sessionId" to sessionId, "userId" to user.id))
         } else {
             ResponseEntity.badRequest().body("Invalid access code")
         }

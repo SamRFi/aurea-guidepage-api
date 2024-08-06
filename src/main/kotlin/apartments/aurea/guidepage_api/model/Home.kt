@@ -10,5 +10,5 @@ data class Home(
     val name: String,
     val address: String,
     val guidePageId: String? = null,
-    val userId: String
+    val userId: String?
 )
