@@ -28,7 +28,7 @@ class GuidePageController(
     }
 
     @GetMapping("/home/{homeId}")
-    fun getGuidePageByHomeId(@RequestAttribute("userId") userId: String, @PathVariable homeId: String): ResponseEntity<GuidePage> {
+    fun getGuidePageByHomeId(@PathVariable homeId: String): ResponseEntity<GuidePage> {
         val guidePage = guidePageService.getGuidePageByHomeId(homeId)
         return if (guidePage != null) {
             ResponseEntity.ok(guidePage)

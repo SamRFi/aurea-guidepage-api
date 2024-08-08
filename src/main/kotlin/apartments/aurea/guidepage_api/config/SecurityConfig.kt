@@ -4,6 +4,7 @@ import apartments.aurea.guidepage_api.service.UserService
 import apartments.aurea.guidepage_api.filter.SessionAuthenticationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
+import org.springframework.http.HttpMethod
 import org.springframework.security.config.annotation.web.builders.HttpSecurity
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity
 import org.springframework.security.web.SecurityFilterChain
@@ -25,6 +26,7 @@ class SecurityConfig(
             .authorizeHttpRequests { authorize ->
                 authorize
                     .requestMatchers("/api/auth/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/guidepages/home/**").permitAll()
                     .anyRequest().authenticated()
             }
             .sessionManagement { session ->
