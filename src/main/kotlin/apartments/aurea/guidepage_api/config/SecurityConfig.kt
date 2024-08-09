@@ -1,6 +1,5 @@
 package apartments.aurea.guidepage_api.config
 
-import apartments.aurea.guidepage_api.service.UserService
 import apartments.aurea.guidepage_api.filter.SessionAuthenticationFilter
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -14,7 +13,6 @@ import org.springframework.security.config.http.SessionCreationPolicy
 @Configuration
 @EnableWebSecurity
 class SecurityConfig(
-    private val userService: UserService,
     private val sessionAuthenticationFilter: SessionAuthenticationFilter
 ) {
 
@@ -27,6 +25,8 @@ class SecurityConfig(
                 authorize
                     .requestMatchers("/api/auth/**").permitAll()
                     .requestMatchers(HttpMethod.GET, "/api/guidepages/home/**").permitAll()
+                    .requestMatchers(HttpMethod.GET, "/api/images/**").permitAll()
+                    .requestMatchers("/swagger-ui/**", "/v3/api-docs/**", "/swagger-ui.html").permitAll()
                     .anyRequest().authenticated()
             }
             .sessionManagement { session ->
