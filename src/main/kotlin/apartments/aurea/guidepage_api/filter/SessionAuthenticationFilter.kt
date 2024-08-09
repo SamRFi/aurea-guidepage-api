@@ -30,7 +30,7 @@ class SessionAuthenticationFilter(
                     // Set the user ID in the request attributes
                     request.setAttribute("userId", userId)
                     // Renew session
-                    redisTemplate.expire(sessionId, Duration.ofMinutes(1))
+                    redisTemplate.expire(sessionId, Duration.ofMinutes(30))
                 }
             }
         }

@@ -8,6 +8,8 @@ data class GuidePage(
     @Id
     val id: String? = null,
     val homeId: String,
+    val introductionImage: String? = null,
+    val introductionText: String? = null,
     val sections: List<Section>
 )
 
